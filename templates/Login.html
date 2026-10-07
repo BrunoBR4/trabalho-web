@@ -1,0 +1,47 @@
+{% extends "base_sem_menu.html" %}
+
+{% block titulo %}Login - MeetCars{% endblock %}
+
+{% block conteudo %}
+<div class="container min-vh-100 d-flex align-items-center">
+    <div class="col-12 col-md-8 col-lg-4 mx-auto">
+
+        <div class="card card-login shadow-sm">
+
+            <!-- Topo do card com a logo -->
+            <div class="card-header bg-white text-center py-3">
+                <img src="{{ url_for('static', filename='img/logo.svg') }}" alt="Logo AutoVia" height="52">
+            </div>
+
+            <div class="card-body p-4">
+                <h2 class="text-center fw-bold mb-4">Login</h2>
+
+                <form method="post" action="{{ url_for('login') }}">
+
+                    <div class="mb-3">
+                        <label for="email" class="form-label">E-mail:</label>
+                        <input type="email" class="form-control" id="email" name="email"
+                               placeholder="Digite seu e-mail" required>
+                    </div>
+
+                    <div class="mb-2">
+                        <label for="senha" class="form-label">Senha:</label>
+                        <input type="password" class="form-control" id="senha" name="senha"
+                               placeholder="Digite sua senha" required>
+                    </div>
+
+                    <!-- Recuperar Senha: logo abaixo do campo, pequeno e à direita -->
+                    <div class="text-end mb-3">
+                        <a href="#" class="link-recuperar">Recuperar senha</a>
+                    </div>
+
+                    <button type="submit" class="btn btn-primaria w-100 mb-3">Entrar</button>
+                    <a href="#" class="btn btn-secundaria w-100">Cadastrar</a>
+
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>
+{% endblock %}
