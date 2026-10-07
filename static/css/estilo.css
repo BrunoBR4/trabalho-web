@@ -1,0 +1,129 @@
+/* ===== Cores do site (tiradas da logo MeetCars) ===== */
+:root {
+    --cor-preto: #0A0A0A;
+    --cor-vermelho: #FA0516;
+    --cor-vermelho-escuro: #C2000F;
+    --cor-branco: #FFFFFF;
+    --cor-cinza: #5C5C5C;
+}
+
+body {
+    background-color: var(--cor-preto);
+    color: var(--cor-preto);
+}
+
+/* ===== Fundo desfocado da tela de login =====
+   Duas metades da tela: esportivo à esquerda e SUV à direita.
+   A primeira camada (gradient) escurece a foto; se a imagem não existir,
+   a tela fica preta e continua funcionando. */
+.fundo {
+    position: fixed;
+    top: -20px;
+    bottom: -20px;
+    width: 50%;
+    z-index: -1;
+    filter: blur(8px);
+    background-size: cover;
+    background-position: center;
+    background-color: var(--cor-preto);
+}
+
+.fundo-esq {
+    left: -20px;
+    width: calc(50% + 20px);
+    background-image:
+        linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)),
+        url("../img/fundo-esportivo.jpg");
+}
+
+.fundo-dir {
+    right: -20px;
+    width: calc(50% + 20px);
+    background-image:
+        linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)),
+        url("../img/fundo-suv.jpg");
+}
+
+/* ===== Card do login ===== */
+.card-login {
+    border: 0;
+    border-radius: 0.75rem;
+    overflow: hidden;
+}
+
+/* Topo preto: a logo tem fundo preto, então ela "encaixa" sem emendas */
+.card-login .card-header {
+    background-color: var(--cor-preto);
+    border-bottom: 4px solid var(--cor-vermelho);
+}
+
+/* ===== Botão principal (Entrar) ===== */
+.btn-primaria {
+    --bs-btn-color: #fff;
+    --bs-btn-bg: var(--cor-vermelho);
+    --bs-btn-border-color: var(--cor-vermelho);
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: var(--cor-vermelho-escuro);
+    --bs-btn-hover-border-color: var(--cor-vermelho-escuro);
+    --bs-btn-active-color: #fff;
+    --bs-btn-active-bg: var(--cor-vermelho-escuro);
+    --bs-btn-active-border-color: var(--cor-vermelho-escuro);
+    font-weight: 600;
+}
+
+/* ===== Botão secundário (Cadastrar) ===== */
+.btn-secundaria {
+    --bs-btn-color: var(--cor-preto);
+    --bs-btn-border-color: var(--cor-preto);
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: var(--cor-preto);
+    --bs-btn-hover-border-color: var(--cor-preto);
+    --bs-btn-active-color: #fff;
+    --bs-btn-active-bg: var(--cor-preto);
+    --bs-btn-active-border-color: var(--cor-preto);
+    font-weight: 600;
+}
+
+/* ===== Link "Recuperar senha": pequeno e discreto ===== */
+.link-recuperar {
+    font-size: 0.85rem;
+    color: var(--cor-cinza);
+}
+
+.link-recuperar:hover {
+    color: var(--cor-vermelho);
+}
+
+/* Campo em destaque quando clicado */
+.form-control:focus {
+    border-color: var(--cor-vermelho);
+    box-shadow: 0 0 0 0.2rem rgba(250, 5, 22, 0.25);
+}
+
+/* ===== Campo com erro: vermelho bem chamativo =====
+   A mensagem aparece dentro do campo (como placeholder), e o campo
+   continua liberado para digitar de novo. */
+.campo-erro,
+.campo-erro:focus {
+    border: 2px solid #FF0000;
+    background-color: #FFE3E3;
+    box-shadow: 0 0 0 0.2rem rgba(255, 0, 0, 0.35);
+    animation: tremer 0.4s;
+}
+
+.campo-erro::placeholder {
+    color: #FF0000;
+    font-weight: 800;
+    opacity: 1;
+}
+
+/* Tremidinha rápida para chamar atenção quando o erro aparece */
+@keyframes tremer {
+    0%, 100% { transform: translateX(0); }
+    20%, 60% { transform: translateX(-6px); }
+    40%, 80% { transform: translateX(6px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .campo-erro { animation: none; }
+}

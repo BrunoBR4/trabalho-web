@@ -1,0 +1,22 @@
+{% extends "base_sem_menu.html" %}
+
+{% block titulo %}Início - MeetCars{% endblock %}
+
+{% block conteudo %}
+<div class="container min-vh-100 d-flex align-items-center">
+    <div class="col-12 col-md-8 col-lg-5 mx-auto">
+        <div class="card card-login shadow-sm text-center">
+            <div class="card-header py-2">
+                <img src="{{ url_for('static', filename='img/logo_meetcars.png') }}"
+                     alt="MeetCars" class="img-fluid" style="max-height: 110px;">
+            </div>
+            <div class="card-body p-4">
+                <!-- {{ nome }} vem do Python (app.py) -->
+                <h2 class="fw-bold">Bem-vindo, {{ nome }}!</h2>
+                <p class="text-secondary">Página provisória. Aqui entrará o menu e o restante do site.</p>
+                <a href="{{ url_for('sair') }}" class="btn btn-secundaria w-100">Sair</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

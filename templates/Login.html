@@ -3,14 +3,18 @@
 {% block titulo %}Login - MeetCars{% endblock %}
 
 {% block conteudo %}
+<!-- Fundo desfocado: esportivo (esquerda) e SUV (direita) -->
+<div class="fundo fundo-esq"></div>
+<div class="fundo fundo-dir"></div>
+
 <div class="container min-vh-100 d-flex align-items-center">
     <div class="col-12 col-md-8 col-lg-4 mx-auto">
 
         <div class="card card-login shadow-sm">
 
             <!-- Topo do card com a logo -->
-            <div class="card-header bg-white text-center py-3">
-                <img src="{{ url_for('static', filename='img/logo.svg') }}" alt="Logo AutoVia" height="52">
+            <div class="card-header text-center py-2">
+                <img src="{{ url_for('static', filename='img/logo_meetcars_com_slogan.png') }}" alt="MeetCars - Compre, Venda e Alugue" class="img-fluid" style="max-height: 150px;">
             </div>
 
             <div class="card-body p-4">
@@ -20,14 +24,19 @@
 
                     <div class="mb-3">
                         <label for="email" class="form-label">E-mail:</label>
-                        <input type="email" class="form-control" id="email" name="email"
-                               placeholder="Digite seu e-mail" required>
+                        <input type="email" id="email" name="email"
+                               class="form-control {% if erro_email %}campo-erro{% endif %}"
+                               placeholder="{{ erro_email or 'Digite seu e-mail' }}"
+                               value="{{ email_digitado }}"
+                               {% if erro_email %}autofocus{% endif %} required>
                     </div>
 
                     <div class="mb-2">
                         <label for="senha" class="form-label">Senha:</label>
-                        <input type="password" class="form-control" id="senha" name="senha"
-                               placeholder="Digite sua senha" required>
+                        <input type="password" id="senha" name="senha"
+                               class="form-control {% if erro_senha %}campo-erro{% endif %}"
+                               placeholder="{{ erro_senha or 'Digite sua senha' }}"
+                               {% if erro_senha %}autofocus{% endif %} required>
                     </div>
 
                     <!-- Recuperar Senha: logo abaixo do campo, pequeno e à direita -->
