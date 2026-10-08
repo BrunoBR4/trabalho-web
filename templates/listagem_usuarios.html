@@ -1,0 +1,57 @@
+{% extends "base_com_menu.html" %}
+
+{% block titulo %}Listagem de Usuários - MeetCars{% endblock %}
+
+{% block fundo %}<div class="fundo-pagina fundo-listagem-usuarios"></div>{% endblock %}
+{% block classe_conteudo %}conteudo-com-fundo{% endblock %}
+
+{% block conteudo %}
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h2 class="fw-bold mb-0 titulo-pagina">Listagem de Usuários</h2>
+    <a href="{{ url_for('cadastro_usuarios') }}" class="btn btn-success text-uppercase">Adicionar</a>
+</div>
+
+<div class="card border-0 shadow-sm">
+    <div class="card-body">
+        <!-- Dados de exemplo (a tabela é só visual, não vem de banco de dados) -->
+        <div class="table-responsive">
+            <table class="table table-striped table-hover align-middle mb-0">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>NOME</th>
+                        <th>EMAIL</th>
+                        <th>CELULAR</th>
+                        <th>NÍVEL</th>
+                        <th>AÇÕES</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Bruno</td>
+                        <td>brunowantonio1@gmail.com</td>
+                        <td>(14) 99999-0001</td>
+                        <td>Administrador</td>
+                        <td>
+                            <button class="btn btn-sm btn-warning" type="button">Editar</button>
+                            <button class="btn btn-sm btn-danger" type="button">Excluir</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Ronan</td>
+                        <td>meuemail@gmail.com</td>
+                        <td>(14) 99999-0002</td>
+                        <td>Usuário</td>
+                        <td>
+                            <button class="btn btn-sm btn-warning" type="button">Editar</button>
+                            <button class="btn btn-sm btn-danger" type="button">Excluir</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

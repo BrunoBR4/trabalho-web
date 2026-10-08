@@ -1,6 +1,6 @@
 /* ===== Cores do site (tiradas da logo MeetCars) ===== */
 :root {
-    --cor-preto: #0A0A0A;
+    --cor-preto: #000000;
     --cor-vermelho: #FA0516;
     --cor-vermelho-escuro: #C2000F;
     --cor-branco: #FFFFFF;
@@ -126,4 +126,240 @@ body {
 
 @media (prefers-reduced-motion: reduce) {
     .campo-erro { animation: none; }
+}
+
+/* ===== Layout com menu lateral ===== */
+.layout-menu {
+    display: flex;
+    min-height: 100vh;
+}
+
+.menu-lateral {
+    width: 260px;
+    flex-shrink: 0;
+    position: sticky;      /* o menu acompanha a rolagem da página */
+    top: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding: 1.25rem 0;
+    background-color: var(--cor-preto);
+    color: var(--cor-branco);
+}
+
+.menu-saudacao {
+    padding: 0.5rem 1rem 1rem;
+    text-align: center;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-bottom: 1px solid #2B2B2B;
+}
+
+.menu-saudacao span {
+    color: var(--cor-vermelho);
+}
+
+.menu-link {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.85rem 1.25rem;
+    color: #CFCFCF;
+    text-decoration: none;
+    border-left: 4px solid transparent;
+}
+
+.menu-link:hover {
+    background-color: #1A1A1A;
+    color: var(--cor-branco);
+}
+
+/* Link da página atual */
+.menu-link.ativo {
+    background-color: #1A1A1A;
+    color: var(--cor-branco);
+    font-weight: 600;
+    border-left-color: var(--cor-vermelho);
+}
+
+/* Empurra o "Sair" para o fim do menu */
+.menu-sair {
+    margin-top: auto;
+}
+
+.conteudo-principal {
+    flex: 1;
+    min-width: 0;
+    padding: 2rem;
+    background-color: #F2F4F5;
+}
+
+/* ===== Fundo desfocado das páginas com menu =====
+   Funciona como o fundo do login, mas cobre a tela toda.
+   Camadas (de cima para baixo): escurecimento, imagem própria da página e,
+   se a imagem própria ainda não existir, uma imagem que já está no projeto. */
+.fundo-pagina {
+    position: fixed;
+    inset: -20px;
+    z-index: -1;
+    filter: blur(8px);
+    background-size: cover;
+    background-position: center;
+    background-color: var(--cor-preto);
+}
+
+.fundo-listagem-usuarios {
+    background-image:
+        linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)),
+        url("../img/fundo-listagem-usuarios.jpg"),
+        url("../img/fundo-listagem.jpg");
+}
+
+.fundo-cadastro-usuarios {
+    background-image:
+        linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)),
+        url("../img/fundo-cadastro-usuarios.jpg"),
+        url("../img/fundo-cadastro.jpg");
+}
+
+.fundo-cadastro-carros {
+    background-image:
+        linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)),
+        url("../img/fundo-cadastro-carros.jpg"),
+        url("../img/fundo-cadastro-carros2.jpg");
+}
+
+.fundo-cadastro-alugueis {
+    background-image:
+        linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)),
+        url("../img/fundo-cadastro-alugueis.jpg"),
+        url("../img/fundo-cadastro-alugueis2.jpg");
+}
+
+/* Conteúdo transparente para o fundo aparecer; o card continua branco */
+.conteudo-com-fundo {
+    background-color: transparent;
+}
+
+.titulo-pagina {
+    color: var(--cor-branco);
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+}
+
+/* Em telas pequenas o menu vira uma faixa no topo */
+@media (max-width: 767.98px) {
+    .layout-menu { flex-direction: column; }
+    .menu-lateral { width: 100%; height: auto; position: static; }
+    .menu-sair { margin-top: 1rem; }
+}
+
+/* ===== Página Comércio ===== */
+.comercio-largura {
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+.comercio-titulo {
+    text-wrap: balance;   /* quebra a frase em linhas equilibradas */
+}
+
+.comercio-titulo .destaque {
+    color: var(--cor-vermelho);
+}
+
+/* Foco da barra de pesquisa e da categoria na cor do site */
+.barra-comercio .form-select:focus {
+    border-color: var(--cor-vermelho);
+    box-shadow: 0 0 0 0.2rem rgba(250, 5, 22, 0.25);
+}
+
+/* ----- Anúncio (card) ----- */
+.anuncio {
+    border: 0;
+    border-bottom: 4px solid transparent;
+    border-radius: 0.75rem;
+    overflow: hidden;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+/* Interação ao passar o mouse: sobe, ganha sombra e uma linha vermelha embaixo */
+.anuncio:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.25) !important;
+    border-bottom-color: var(--cor-vermelho);
+}
+
+.anuncio-foto {
+    position: relative;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #1A1A1A, #3A3A3A);
+    color: #5A5A5A;
+    font-size: 4rem;
+}
+
+.anuncio-foto img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;    /* a foto preenche o espaço sem esticar */
+    transition: transform 0.4s ease;
+}
+
+/* A foto dá um zoom suave no hover */
+.anuncio:hover .anuncio-foto img {
+    transform: scale(1.08);
+}
+
+.anuncio-modelo {
+    font-weight: 700;
+}
+
+.anuncio-info {
+    font-size: 0.875rem;
+    color: var(--cor-cinza);
+}
+
+/* Preço: fonte maior dentro de um retângulo verde */
+.anuncio-preco {
+    background-color: #198754;
+    color: var(--cor-branco);
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-align: center;
+    padding: 0.55rem 1rem;
+    border-radius: 0.5rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .anuncio,
+    .anuncio-foto img { transition: none; }
+    .anuncio:hover,
+    .anuncio:hover .anuncio-foto img { transform: none; }
+}
+
+/* ===== Ajustes finais ===== */
+
+/* Comércio: a barra de pesquisa ocupa só o espaço que sobra, e o
+   Filtrar e a Categoria ficam à direita dela (em telas bem pequenas quebram de linha) */
+.barra-comercio .input-group {
+    width: auto;
+    flex: 1 1 280px;
+}
+
+/* Fundo NÍTIDO (sem desfoque) em 3 páginas.
+   Para voltar a desfocar uma delas, basta apagar o nome dela desta lista. */
+.fundo-listagem-usuarios,
+.fundo-cadastro-carros,
+.fundo-cadastro-alugueis {
+    filter: none;
+}
+
+/* Cadastro aberto (sem menu): largura máxima do retângulo */
+.caixa-cadastro {
+    max-width: 1000px;
 }

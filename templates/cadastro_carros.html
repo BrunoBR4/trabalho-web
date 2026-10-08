@@ -1,0 +1,64 @@
+{% extends "base_com_menu.html" %}
+
+{% block titulo %}Cadastro de Carros - MeetCars{% endblock %}
+
+{% block fundo %}<div class="fundo-pagina fundo-cadastro-carros"></div>{% endblock %}
+{% block classe_conteudo %}conteudo-com-fundo{% endblock %}
+
+{% block conteudo %}
+<h2 class="fw-bold mb-4 titulo-pagina">Cadastro de Carros</h2>
+
+<div class="card border-0 shadow-sm">
+    <div class="card-body p-4">
+        <!-- Formulário só visual: o botão não envia nada (o site não é funcional) -->
+        <form>
+            <div class="row g-3">
+                <div class="col-12 col-md-4">
+                    <label for="marca" class="form-label">Marca:</label>
+                    <input type="text" id="marca" class="form-control" placeholder="Ex.: BMW">
+                </div>
+                <div class="col-12 col-md-4">
+                    <label for="modelo" class="form-label">Modelo:</label>
+                    <input type="text" id="modelo" class="form-control" placeholder="Ex.: X3 M40i">
+                </div>
+                <div class="col-6 col-md-2">
+                    <label for="ano" class="form-label">Ano:</label>
+                    <input type="number" id="ano" class="form-control" placeholder="2019">
+                </div>
+                <div class="col-6 col-md-2">
+                    <label for="cor" class="form-label">Cor:</label>
+                    <input type="text" id="cor" class="form-control" placeholder="Azul">
+                </div>
+                <div class="col-12 col-md-3">
+                    <label for="km" class="form-label">Quilometragem:</label>
+                    <input type="number" id="km" class="form-control" placeholder="0">
+                </div>
+                <div class="col-12 col-md-3">
+                    <label for="valor" class="form-label">Valor (R$):</label>
+                    <input type="text" id="valor" class="form-control" placeholder="0,00">
+                </div>
+                <div class="col-12 col-md-3">
+                    <label for="negocio" class="form-label">Tipo de negócio:</label>
+                    <select id="negocio" class="form-select">
+                        <option selected>Venda</option>
+                        <option>Aluguel</option>
+                    </select>
+                </div>
+                <div class="col-12 col-md-3">
+                    <label for="status" class="form-label">Status:</label>
+                    <select id="status" class="form-select">
+                        <option selected>Disponível</option>
+                        <option>Alugado</option>
+                        <option>Vendido</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="mt-4 d-flex gap-2">
+                <button type="button" class="btn btn-primaria">Cadastrar</button>
+                <a href="{{ url_for('comercio') }}" class="btn btn-secundaria">Voltar</a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

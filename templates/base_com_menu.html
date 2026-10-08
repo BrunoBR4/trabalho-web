@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block titulo %}MeetCars{% endblock %}</title>
+
+    <!-- Bootstrap (CSS) e Bootstrap Icons (ícones do menu) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+
+    <!-- Nosso CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/estilo.css') }}">
+</head>
+<body>
+
+<!-- Fundo desfocado opcional: cada página pode preencher este bloco -->
+{% block fundo %}{% endblock %}
+
+<div class="layout-menu">
+
+    <!-- ===== MENU LATERAL ===== -->
+    <aside class="menu-lateral">
+
+        <!-- Logo sem slogan -->
+        <a href="{{ url_for('comercio') }}" class="d-block px-3">
+            <img src="{{ url_for('static', filename='img/logo_meetcars.png') }}"
+                 alt="MeetCars" class="img-fluid">
+        </a>
+
+        <!-- session vem do Flask e já fica disponível em qualquer template -->
+        <div class="menu-saudacao">Olá, <span>{{ session['nome'] }}</span>!</div>
+
+        <!-- request.endpoint = nome da função da rota atual.
+             Usamos para pintar o link da página onde o usuário está ("ativo"). -->
+        <nav class="mt-2">
+            <a href="{{ url_for('comercio') }}"
+               class="menu-link {% if request.endpoint == 'comercio' %}ativo{% endif %}">
+                <i class="bi bi-shop"></i> Comércio
+            </a>
+            <a href="{{ url_for('listagem_usuarios') }}"
+               class="menu-link {% if request.endpoint == 'listagem_usuarios' %}ativo{% endif %}">
+                <i class="bi bi-people"></i> Listagem de Usuários
+            </a>
+            <a href="{{ url_for('cadastro_usuarios') }}"
+               class="menu-link {% if request.endpoint == 'cadastro_usuarios' %}ativo{% endif %}">
+                <i class="bi bi-person-plus"></i> Cadastro de Usuários
+            </a>
+            <a href="{{ url_for('cadastro_carros') }}"
+               class="menu-link {% if request.endpoint == 'cadastro_carros' %}ativo{% endif %}">
+                <i class="bi bi-plus-circle"></i> Cadastro de Carros
+            </a>
+            <a href="{{ url_for('cadastro_alugueis') }}"
+               class="menu-link {% if request.endpoint == 'cadastro_alugueis' %}ativo{% endif %}">
+                <i class="bi bi-calendar-plus"></i> Cadastro de Aluguéis
+            </a>
+        </nav>
+
+        <a href="{{ url_for('sair') }}" class="menu-link menu-sair">
+            <i class="bi bi-box-arrow-left"></i> Sair
+        </a>
+    </aside>
+
+    <!-- ===== CONTEÚDO DE CADA PÁGINA ===== -->
+    <main class="conteudo-principal {% block classe_conteudo %}{% endblock %}">
+        {% block conteudo %}{% endblock %}
+    </main>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

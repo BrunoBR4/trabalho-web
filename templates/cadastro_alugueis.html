@@ -1,0 +1,57 @@
+{% extends "base_com_menu.html" %}
+
+{% block titulo %}Cadastro de Aluguéis - MeetCars{% endblock %}
+
+{% block fundo %}<div class="fundo-pagina fundo-cadastro-alugueis"></div>{% endblock %}
+{% block classe_conteudo %}conteudo-com-fundo{% endblock %}
+
+{% block conteudo %}
+<h2 class="fw-bold mb-4 titulo-pagina">Cadastro de Aluguéis</h2>
+
+<div class="card border-0 shadow-sm">
+    <div class="card-body p-4">
+        <!-- Formulário só visual: o botão não envia nada (o site não é funcional) -->
+        <form>
+            <div class="row g-3">
+                <div class="col-12 col-md-6">
+                    <label for="cliente" class="form-label">Cliente:</label>
+                    <input type="text" id="cliente" class="form-control" placeholder="Nome do cliente">
+                </div>
+                <div class="col-12 col-md-6">
+                    <label for="carro" class="form-label">Carro:</label>
+                    <select id="carro" class="form-select">
+                        <option selected>Selecione o carro</option>
+                        <option>BMW X3 M40i</option>
+                        <option>Nissan Skyline GT-R R34</option>
+                    </select>
+                </div>
+                <div class="col-12 col-md-3">
+                    <label for="retirada" class="form-label">Data de retirada:</label>
+                    <input type="date" id="retirada" class="form-control">
+                </div>
+                <div class="col-12 col-md-3">
+                    <label for="devolucao" class="form-label">Data de devolução:</label>
+                    <input type="date" id="devolucao" class="form-control">
+                </div>
+                <div class="col-12 col-md-3">
+                    <label for="diaria" class="form-label">Valor da diária (R$):</label>
+                    <input type="text" id="diaria" class="form-control" placeholder="0,00">
+                </div>
+                <div class="col-12 col-md-3">
+                    <label for="situacao" class="form-label">Situação:</label>
+                    <select id="situacao" class="form-select">
+                        <option selected>Em andamento</option>
+                        <option>Concluído</option>
+                        <option>Cancelado</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="mt-4 d-flex gap-2">
+                <button type="button" class="btn btn-primaria">Cadastrar</button>
+                <a href="{{ url_for('comercio') }}" class="btn btn-secundaria">Voltar</a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
