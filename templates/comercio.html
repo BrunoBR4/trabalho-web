@@ -7,23 +7,17 @@
 
     <!-- Frase de destaque, centralizada -->
     <h2 class="comercio-titulo text-center fw-bold mb-4">
-        <span class="destaque">Compre</span> novos veículos,
-        <span class="destaque">Venda</span> seus veículos e
-        <span class="destaque">Alugue</span> veículos aqui!
+        <span class="destaque">Compre</span> novos veículos e
+        <span class="destaque">Venda</span> seus veículos aqui!
     </h2>
 
-    <!-- Barra de pesquisa + Filtrar + Categoria (apenas visual, não funciona) -->
+    <!-- Barra de pesquisa + Filtrar (apenas visual, não funciona) -->
     <div class="barra-comercio d-flex flex-wrap gap-2 mb-4">
-        <div class="input-group flex-grow-1">
+        <div class="input-group">
             <span class="input-group-text bg-white"><i class="bi bi-search"></i></span>
             <input type="search" class="form-control" placeholder="Pesquisar por modelo ou marca...">
         </div>
         <button type="button" class="btn btn-primaria"><i class="bi bi-funnel"></i> Filtrar</button>
-        <select class="form-select w-auto">
-            <option selected>Categoria</option>
-            <option>Vendas</option>
-            <option>Aluguéis</option>
-        </select>
     </div>
 
     {# Anúncios: o for repete este bloco para cada item da lista ANUNCIOS (app.py) #}
@@ -31,15 +25,6 @@
         {% for a in anuncios %}
         <div class="col-12 col-md-6 col-xl-4">
             <div class="card anuncio shadow-sm h-100">
-
-                <!-- Foto (se o arquivo não existir, aparece o fundo escuro com o ícone do carro) -->
-                <div class="anuncio-foto">
-                    <i class="bi bi-car-front"></i>
-                    <img src="{{ url_for('static', filename='img/carros/' + a.foto) }}"
-                         alt="{{ a.marca }} {{ a.modelo }}"
-                         onerror="this.style.display='none'">
-                </div>
-
                 <div class="card-body d-flex flex-column">
                     <h5 class="anuncio-modelo mb-2">{{ a.modelo }}</h5>
 
@@ -50,7 +35,6 @@
                     <!-- mt-auto empurra o preço para o fim, alinhando todos os cards -->
                     <div class="anuncio-preco mt-auto">{{ a.preco }}</div>
                 </div>
-
             </div>
         </div>
         {% endfor %}

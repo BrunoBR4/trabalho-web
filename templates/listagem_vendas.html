@@ -1,0 +1,73 @@
+{% extends "base_com_menu.html" %}
+
+{% block titulo %}Listagem de Vendas - MeetCars{% endblock %}
+
+{% block conteudo %}
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h2 class="fw-bold mb-0">Listagem de Vendas</h2>
+    <a href="{{ url_for('cadastro_vendas') }}" class="btn btn-success text-uppercase">Adicionar</a>
+</div>
+
+<div class="card border-0 shadow-sm">
+    <div class="card-body">
+        <!-- Dados de exemplo (a tabela é só visual, não vem de banco de dados) -->
+        <div class="table-responsive">
+            <table class="table table-striped table-hover align-middle mb-0">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>MARCA</th>
+                        <th>MODELO</th>
+                        <th>ANO</th>
+                        <th>QUILOMETRAGEM</th>
+                        <th>VALOR</th>
+                        <th>STATUS</th>
+                        <th>AÇÕES</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Nissan</td>
+                        <td>Skyline GT-R R34</td>
+                        <td>1999</td>
+                        <td>58.000 km</td>
+                        <td>R$ 950.000,00</td>
+                        <td>Disponível</td>
+                        <td>
+                            <button class="btn btn-sm btn-warning" type="button">Editar</button>
+                            <button class="btn btn-sm btn-danger" type="button">Excluir</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Toyota</td>
+                        <td>Corolla XEi</td>
+                        <td>2021</td>
+                        <td>32.000 km</td>
+                        <td>R$ 128.900,00</td>
+                        <td>Disponível</td>
+                        <td>
+                            <button class="btn btn-sm btn-warning" type="button">Editar</button>
+                            <button class="btn btn-sm btn-danger" type="button">Excluir</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Ford</td>
+                        <td>Mustang GT</td>
+                        <td>2018</td>
+                        <td>36.200 km</td>
+                        <td>R$ 349.000,00</td>
+                        <td>Vendido</td>
+                        <td>
+                            <button class="btn btn-sm btn-warning" type="button">Editar</button>
+                            <button class="btn btn-sm btn-danger" type="button">Excluir</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

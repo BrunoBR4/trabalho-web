@@ -12,23 +12,21 @@ USUARIOS = {
     "meuemail@gmail.com": {"nome": "Ronan", "senha": "1234"},
 }
 
-
-# Anúncios da página Comércio (dados fictícios, só para a apresentação).
+# Anúncios de venda da página Comércio (dados fictícios, só para a apresentação).
 # Cada anúncio é um dicionário. Para mudar um anúncio, edite os valores aqui.
-# "foto" é o nome do arquivo salvo na pasta static/img/carros/
 ANUNCIOS = [
     {"modelo": "Skyline GT-R R34", "marca": "Nissan", "ano": 1999,
-     "km": "58.000", "preco": "R$ 950.000,00", "foto": "carro1.jpg"},
+     "km": "58.000", "preco": "R$ 950.000,00"},
     {"modelo": "X3 M40i", "marca": "BMW", "ano": 2019,
-     "km": "41.500", "preco": "R$ 650,00 / dia", "foto": "carro2.jpg"},
+     "km": "41.500", "preco": "R$ 289.900,00"},
     {"modelo": "Corolla XEi", "marca": "Toyota", "ano": 2021,
-     "km": "32.000", "preco": "R$ 128.900,00", "foto": "carro3.jpg"},
+     "km": "32.000", "preco": "R$ 128.900,00"},
     {"modelo": "Civic Touring", "marca": "Honda", "ano": 2020,
-     "km": "45.300", "preco": "R$ 139.900,00", "foto": "carro4.jpg"},
+     "km": "45.300", "preco": "R$ 139.900,00"},
     {"modelo": "Compass Limited", "marca": "Jeep", "ano": 2022,
-     "km": "24.800", "preco": "R$ 420,00 / dia", "foto": "carro5.jpg"},
+     "km": "24.800", "preco": "R$ 169.900,00"},
     {"modelo": "Mustang GT", "marca": "Ford", "ano": 2018,
-     "km": "36.200", "preco": "R$ 349.000,00", "foto": "carro6.jpg"},
+     "km": "36.200", "preco": "R$ 349.000,00"},
 ]
 
 
@@ -97,18 +95,18 @@ def cadastro_usuarios():
     return render_template("cadastro_usuarios.html")
 
 
-@app.route("/carros/cadastro")
-def cadastro_carros():
+@app.route("/vendas")
+def listagem_vendas():
     if "nome" not in session:
         return redirect(url_for("login"))
-    return render_template("cadastro_carros.html")
+    return render_template("listagem_vendas.html")
 
 
-@app.route("/alugueis/cadastro")
-def cadastro_alugueis():
+@app.route("/vendas/cadastro")
+def cadastro_vendas():
     if "nome" not in session:
         return redirect(url_for("login"))
-    return render_template("cadastro_alugueis.html")
+    return render_template("cadastro_vendas.html")
 
 
 @app.route("/sair")

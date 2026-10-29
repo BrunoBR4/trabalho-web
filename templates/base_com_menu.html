@@ -14,9 +14,6 @@
 </head>
 <body>
 
-<!-- Fundo desfocado opcional: cada página pode preencher este bloco -->
-{% block fundo %}{% endblock %}
-
 <div class="layout-menu">
 
     <!-- ===== MENU LATERAL ===== -->
@@ -46,13 +43,13 @@
                class="menu-link {% if request.endpoint == 'cadastro_usuarios' %}ativo{% endif %}">
                 <i class="bi bi-person-plus"></i> Cadastro de Usuários
             </a>
-            <a href="{{ url_for('cadastro_carros') }}"
-               class="menu-link {% if request.endpoint == 'cadastro_carros' %}ativo{% endif %}">
-                <i class="bi bi-plus-circle"></i> Cadastro de Carros
+            <a href="{{ url_for('listagem_vendas') }}"
+               class="menu-link {% if request.endpoint == 'listagem_vendas' %}ativo{% endif %}">
+                <i class="bi bi-card-list"></i> Listagem de Vendas
             </a>
-            <a href="{{ url_for('cadastro_alugueis') }}"
-               class="menu-link {% if request.endpoint == 'cadastro_alugueis' %}ativo{% endif %}">
-                <i class="bi bi-calendar-plus"></i> Cadastro de Aluguéis
+            <a href="{{ url_for('cadastro_vendas') }}"
+               class="menu-link {% if request.endpoint == 'cadastro_vendas' %}ativo{% endif %}">
+                <i class="bi bi-plus-circle"></i> Cadastro de Vendas
             </a>
         </nav>
 
@@ -62,7 +59,7 @@
     </aside>
 
     <!-- ===== CONTEÚDO DE CADA PÁGINA ===== -->
-    <main class="conteudo-principal {% block classe_conteudo %}{% endblock %}">
+    <main class="conteudo-principal">
         {% block conteudo %}{% endblock %}
     </main>
 
