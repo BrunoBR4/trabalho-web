@@ -69,32 +69,6 @@ body {
     box-shadow: 0 0 0 0.2rem rgba(250, 5, 22, 0.25);
 }
 
-/* ===== Campo com erro: vermelho bem chamativo =====
-   A mensagem aparece dentro do campo (como placeholder). */
-.campo-erro,
-.campo-erro:focus {
-    border: 2px solid #FF0000;
-    background-color: #FFE3E3;
-    box-shadow: 0 0 0 0.2rem rgba(255, 0, 0, 0.35);
-    animation: tremer 0.4s;
-}
-
-.campo-erro::placeholder {
-    color: #FF0000;
-    font-weight: 800;
-    opacity: 1;
-}
-
-@keyframes tremer {
-    0%, 100% { transform: translateX(0); }
-    20%, 60% { transform: translateX(-6px); }
-    40%, 80% { transform: translateX(6px); }
-}
-
-@media (prefers-reduced-motion: reduce) {
-    .campo-erro { animation: none; }
-}
-
 /* ===== Layout com menu lateral ===== */
 .layout-menu {
     display: flex;
@@ -120,10 +94,6 @@ body {
     font-size: 1.1rem;
     font-weight: 600;
     border-bottom: 1px solid #2B2B2B;
-}
-
-.menu-saudacao span {
-    color: var(--cor-vermelho);
 }
 
 .menu-link {

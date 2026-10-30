@@ -20,34 +20,33 @@
     <aside class="menu-lateral">
 
         <!-- Logo sem slogan -->
-        <a href="{{ url_for('comercio') }}" class="d-block px-3">
-            <img src="{{ url_for('static', filename='img/logo_meetcars.png') }}"
+        <a href="{{ url_for('dashboard') }}" class="d-block px-3">
+            <img src="https://pt.pngtree.com/free-backgrounds-photos/carros-preto-de-luxo-pictures"
                  alt="MeetCars" class="img-fluid">
         </a>
 
-        <!-- session vem do Flask e já fica disponível em qualquer template -->
-        <div class="menu-saudacao">Olá, <span>{{ session['nome'] }}</span>!</div>
+        <div class="menu-saudacao">Bem-vindo(a)!</div>
 
         <!-- request.endpoint = nome da função da rota atual.
              Usamos para pintar o link da página onde o usuário está ("ativo"). -->
         <nav class="mt-2">
-            <a href="{{ url_for('comercio') }}"
+            <a href="{{ url_for('dashboard') }}"
                class="menu-link {% if request.endpoint == 'comercio' %}ativo{% endif %}">
                 <i class="bi bi-shop"></i> Comércio
             </a>
-            <a href="{{ url_for('listagem_usuarios') }}"
+            <a href="{{ url_for('listar_usuarios') }}"
                class="menu-link {% if request.endpoint == 'listagem_usuarios' %}ativo{% endif %}">
                 <i class="bi bi-people"></i> Listagem de Usuários
             </a>
-            <a href="{{ url_for('cadastro_usuarios') }}"
+            <a href="{{ url_for('inserir_usuarios') }}"
                class="menu-link {% if request.endpoint == 'cadastro_usuarios' %}ativo{% endif %}">
                 <i class="bi bi-person-plus"></i> Cadastro de Usuários
             </a>
-            <a href="{{ url_for('listagem_vendas') }}"
+            <a href="{{ url_for('listar_vendas') }}"
                class="menu-link {% if request.endpoint == 'listagem_vendas' %}ativo{% endif %}">
                 <i class="bi bi-card-list"></i> Listagem de Vendas
             </a>
-            <a href="{{ url_for('cadastro_vendas') }}"
+            <a href="{{ url_for('inserir_vendas') }}"
                class="menu-link {% if request.endpoint == 'cadastro_vendas' %}ativo{% endif %}">
                 <i class="bi bi-plus-circle"></i> Cadastro de Vendas
             </a>

@@ -1,6 +1,6 @@
-{% extends "base_sem_menu.html" %}
+{% extends "layout/base_limpa.html" %}
 
-{% block titulo %}Login - MeetCars{% endblock %}
+{% block titulo %}MeetCars{% endblock %}
 
 {% block conteudo %}
 <div class="container min-vh-100 d-flex align-items-center">
@@ -10,29 +10,25 @@
 
             <!-- Topo do card com a logo -->
             <div class="card-header text-center py-2">
-                <img src="{{ url_for('static', filename='img/logo_meetcars.png') }}" alt="MeetCars" class="img-fluid" style="max-height: 150px;">
+                <img src="https://pt.pngtree.com/free-backgrounds-photos/carros-preto-de-luxo-pictures" alt="MeetCars" class="img-fluid" style="max-height: 150px;">
             </div>
 
             <div class="card-body p-4">
                 <h2 class="text-center fw-bold mb-4">Login</h2>
 
-                <form method="post" action="{{ url_for('login') }}">
+                <!-- novalidate: o navegador não bloqueia campos vazios, então "Entrar" sempre entra -->
+                <form method="post" action="{{ url_for('login') }}" novalidate>
 
                     <div class="mb-3">
                         <label for="email" class="form-label">E-mail:</label>
-                        <input type="email" id="email" name="email"
-                               class="form-control {% if erro_email %}campo-erro{% endif %}"
-                               placeholder="{{ erro_email or 'Digite seu e-mail' }}"
-                               value="{{ email_digitado }}"
-                               {% if erro_email %}autofocus{% endif %} required>
+                        <input type="email" class="form-control" id="email" name="email"
+                               placeholder="Digite seu e-mail" required>
                     </div>
 
                     <div class="mb-2">
                         <label for="senha" class="form-label">Senha:</label>
-                        <input type="password" id="senha" name="senha"
-                               class="form-control {% if erro_senha %}campo-erro{% endif %}"
-                               placeholder="{{ erro_senha or 'Digite sua senha' }}"
-                               {% if erro_senha %}autofocus{% endif %} required>
+                        <input type="password" class="form-control" id="senha" name="senha"
+                               placeholder="Digite sua senha" required>
                     </div>
 
                     <!-- Recuperar Senha: logo abaixo do campo, pequeno e à direita -->
@@ -41,7 +37,7 @@
                     </div>
 
                     <button type="submit" class="btn btn-primaria w-100 mb-3">Entrar</button>
-                    <a href="{{ url_for('cadastro') }}" class="btn btn-secundaria w-100">Cadastrar</a>
+                    <a href="{{ url_for('cadastro_usuarios') }}" class="btn btn-secundaria w-100">Cadastrar</a>
 
                 </form>
             </div>
