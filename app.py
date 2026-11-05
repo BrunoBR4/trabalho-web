@@ -1,29 +1,34 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template
 
 app = Flask(__name__)
 
-# Anúncios de venda da página Comércio (dados fictícios, só para a apresentação).
-# Cada anúncio é um dicionário. Para mudar um anúncio, edite os valores aqui.
+# Anúncios de venda do dashboard (dados fictícios). Para mudar um anúncio, edite os valores.
+# "imagem": cole entre aspas o endereço (link) da foto na internet.
+# Se deixar vazio (""), o anúncio mostra um quadro cinza com um ícone de carro.
 ANUNCIOS = [
-    {"modelo": "Skyline GT-R R34", "marca": "Nissan", "ano": 1999,
-     "km": "58.000", "preco": "R$ 950.000,00"},
-    {"modelo": "X3 M40i", "marca": "BMW", "ano": 2019,
-     "km": "41.500", "preco": "R$ 289.900,00"},
-    {"modelo": "Corolla XEi", "marca": "Toyota", "ano": 2021,
-     "km": "32.000", "preco": "R$ 128.900,00"},
-    {"modelo": "Civic Touring", "marca": "Honda", "ano": 2020,
-     "km": "45.300", "preco": "R$ 139.900,00"},
-    {"modelo": "Compass Limited", "marca": "Jeep", "ano": 2022,
-     "km": "24.800", "preco": "R$ 169.900,00"},
-    {"modelo": "Mustang GT", "marca": "Ford", "ano": 2018,
-     "km": "36.200", "preco": "R$ 349.000,00"},
+    {
+        "modelo": "Lancer GT 2.0",
+        "marca": "Mitsubishi",
+        "ano": 2014,
+        "km": "135.000",
+        "preco": "R$ 52.000,00",
+        "imagem": "https://s3.ecompletocarros.dev/images/lojas/277/veiculos/35096/veiculoInfoVeiculoImagesMobile/vehicle_image_1599249815_f3ccdd27d2000e3f9255a7e3e2c48800.jpeg",
+    },
+    {
+        "modelo": "Opala Comodoro 4.1",
+        "marca": "Chevrolet",
+        "ano": 1975,
+        "km": "202.500",
+        "preco": "R$ 79.900,00",
+        "imagem": "https://www.webmotors.com.br/tabela-fipe/_next/image?url=https%3A%2F%2Fimage.webmotors.com.br%2F_fotos%2FAnuncioUsados%2Fgigante%2F2026%2F202609%2F20260919%2Fchevroletopala25deluxo8vgasolina2pmanual-WMIMAGEM21014013861.jpg&w=768&q=75",
+    },
 ]
 
 # == PADRONIZAÇÃO !!!!! ==
 
 @app.route("/", methods=["GET", "POST"])
 def inicio():
-        return render_template("login.html")
+    return render_template("login.html")
 
 @app.route("/dashboard")
 def dashboard():
@@ -48,11 +53,6 @@ def listagem_vendas():
 @app.route("/vendas/inserir")
 def cadastro_vendas():
     return render_template("vendas/cadastro_vendas.html")
-
-
-@app.route("/sair")
-def sair():
-    return redirect(url_for("login"))
 
 
 if __name__ == "__main__":

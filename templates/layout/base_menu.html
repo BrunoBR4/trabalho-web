@@ -13,17 +13,13 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/estilo.css') }}">
 </head>
 <body>
-
 <div class="layout-menu">
 
     <!-- ===== MENU LATERAL ===== -->
     <aside class="menu-lateral">
 
-        <!-- Logo sem slogan -->
-        <a href="{{ url_for('dashboard') }}" class="d-block px-3">
-            <img src="https://pt.pngtree.com/free-backgrounds-photos/carros-preto-de-luxo-pictures"
-                 alt="MeetCars" class="img-fluid">
-        </a>
+        <!-- Nome da loja (leva ao dashboard) -->
+        <a href="{{ url_for('dashboard') }}" class="marca-texto d-block text-center fs-2 pb-2">MeetCars</a>
 
         <div class="menu-saudacao">Bem-vindo(a)!</div>
 
@@ -31,36 +27,37 @@
              Usamos para pintar o link da página onde o usuário está ("ativo"). -->
         <nav class="mt-2">
             <a href="{{ url_for('dashboard') }}"
-               class="menu-link {% if request.endpoint == 'comercio' %}ativo{% endif %}">
+               class="menu-link {% if request.endpoint == 'dashboard' %}ativo{% endif %}">
                 <i class="bi bi-shop"></i> Comércio
             </a>
-            <a href="{{ url_for('listar_usuarios') }}"
+            <a href="{{ url_for('listagem_usuarios') }}"
                class="menu-link {% if request.endpoint == 'listagem_usuarios' %}ativo{% endif %}">
                 <i class="bi bi-people"></i> Listagem de Usuários
             </a>
-            <a href="{{ url_for('inserir_usuarios') }}"
+            <a href="{{ url_for('cadastro_usuarios') }}"
                class="menu-link {% if request.endpoint == 'cadastro_usuarios' %}ativo{% endif %}">
                 <i class="bi bi-person-plus"></i> Cadastro de Usuários
             </a>
-            <a href="{{ url_for('listar_vendas') }}"
+            <a href="{{ url_for('listagem_vendas') }}"
                class="menu-link {% if request.endpoint == 'listagem_vendas' %}ativo{% endif %}">
                 <i class="bi bi-card-list"></i> Listagem de Vendas
             </a>
-            <a href="{{ url_for('inserir_vendas') }}"
+            <a href="{{ url_for('cadastro_vendas') }}"
                class="menu-link {% if request.endpoint == 'cadastro_vendas' %}ativo{% endif %}">
                 <i class="bi bi-plus-circle"></i> Cadastro de Vendas
             </a>
         </nav>
 
-        <a href="{{ url_for('sair') }}" class="menu-link menu-sair">
+        <!-- Sair volta para a tela de login (rota "inicio") -->
+        <a href="{{ url_for('inicio') }}" class="menu-link menu-sair">
             <i class="bi bi-box-arrow-left"></i> Sair
         </a>
     </aside>
 
-    <!-- ===== CONTEÚDO DE CADA PÁGINA ===== -->
-    <main class="conteudo-principal">
+    <!-- ===== CONTEÚDO: a tag main fica dentro de cada página ===== -->
+    <div class="conteudo-principal">
         {% block conteudo %}{% endblock %}
-    </main>
+    </div>
 
 </div>
 

@@ -1,9 +1,9 @@
 {% extends "layout/base_menu.html" %}
 
-{% block titulo %}MeetCars{% endblock %}
+{% block titulo %}Comércio - MeetCars{% endblock %}
 
 {% block conteudo %}
-<div class="comercio-largura">
+<main class="comercio-largura">
 
     <!-- Frase de destaque, centralizada -->
     <h2 class="comercio-titulo text-center fw-bold mb-4">
@@ -21,10 +21,20 @@
     </div>
 
     {# Anúncios: o for repete este bloco para cada item da lista ANUNCIOS (app.py) #}
-    <div class="row g-4">
+    <div class="row g-4 justify-content-center">
         {% for a in anuncios %}
-        <div class="col-12 col-md-6 col-xl-4">
+        <div class="col-12 col-md-6 col-xl-5">
             <div class="card anuncio shadow-sm h-100">
+                <!-- Foto: vem do endereço da internet guardado em "imagem" (app.py).
+                     Sem endereço (ou com link quebrado), aparece o quadro cinza com o ícone. -->
+                <div class="anuncio-foto">
+                    <i class="bi bi-car-front"></i>
+                    {% if a.imagem %}
+                    <img src="{{ a.imagem }}" alt="{{ a.marca }} {{ a.modelo }}"
+                         onerror="this.style.display='none'">
+                    {% endif %}
+                </div>
+
                 <div class="card-body d-flex flex-column">
                     <h5 class="anuncio-modelo mb-2">{{ a.modelo }}</h5>
 
@@ -40,5 +50,5 @@
         {% endfor %}
     </div>
 
-</div>
+</main>
 {% endblock %}
