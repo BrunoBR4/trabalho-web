@@ -13,10 +13,18 @@
 </head>
 <body>
 
+    {% for tipo, mensagem in get_flashed_messages(with_categories=true) %}
+      <div class="alert alert-{{ tipo }} alert-dismissible fade show" role="alert">
+        {{ mensagem }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Fechar"></button>
+      </div>
+      {% endfor %}
+
     <!-- Aqui entra o conteúdo de cada página que herdar este template -->
     {% block conteudo %}{% endblock %}
 
     <!-- Bootstrap (JavaScript) -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    {% block scripts %}{% endblock %}
 </body>
 </html>

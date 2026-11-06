@@ -1,6 +1,18 @@
-from flask import Flask, render_template
+import os
+
+from dotenv import load_dotenv
+from flask import Flask, redirect, render_template, url_for, request
+from flask_wtf.csrf import CSRFProtect
+
+from db import execute_one
+
+load_dotenv()
 
 app = Flask(__name__)
+app.secret_key = os.getenv('SECRET_KEY')
+
+# Liga a proteção CSRF: todo formulário POST do sistema vai precisar do token
+CSRFProtect(app)
 
 # Anúncios de venda do dashboard (dados fictícios). Para mudar um anúncio, edite os valores.
 # "imagem": cole entre aspas o endereço (link) da foto na internet.
@@ -24,7 +36,9 @@ ANUNCIOS = [
     },
 ]
 
-# == PADRONIZAÇÃO !!!!! ==
+# ==============================================================================
+# PÁGINAS PRINCIPAIS
+# ==============================================================================
 
 @app.route("/", methods=["GET", "POST"])
 def inicio():
@@ -34,6 +48,9 @@ def inicio():
 def dashboard():
     return render_template("dashboard.html", anuncios=ANUNCIOS)
 
+# ==============================================================================
+# USUÁRIOS
+# ==============================================================================
 
 @app.route("/usuarios/listar")
 def listagem_usuarios():
@@ -44,6 +61,9 @@ def listagem_usuarios():
 def cadastro_usuarios():
     return render_template("usuarios/cadastro_usuarios.html")
 
+# ==============================================================================
+# VENDAS
+# ==============================================================================
 
 @app.route("/vendas/listar")
 def listagem_vendas():
@@ -54,6 +74,45 @@ def listagem_vendas():
 def cadastro_vendas():
     return render_template("vendas/cadastro_vendas.html")
 
+# ==============================================================================
+# PERFIL
+# ==============================================================================
+
+@app.route("/perfis/inserir", methods=["GET", "POST"])
+def inserir_perfil():
+
+    if request.method == "POST":
+        redirect(url_for(listar_perfis))
+
+    return render_template("perfis/perfil-form.html")
+
+@app.route("/perfis/listar")
+def listar_perfis():
+    return render_template("perfis/perfis-listar.html")
+
+
+
+
+
+
+
+
+
+
+
+
+# ==============================================================================
+# TELAS DE ERROS
+# ==============================================================================
+
+@app.errorhandler(404)
+def pagina_nao_encontrada(erro):
+    return render_template('404.html'), 404
+
+
+@app.errorhandler(500)
+def erro_no_servidor(erro):
+    return render_template('500.html'), 500
 
 if __name__ == "__main__":
     app.run(debug=True)
