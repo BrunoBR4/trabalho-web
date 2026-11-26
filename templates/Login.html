@@ -8,7 +8,6 @@
 
         <div class="card card-login shadow-sm">
 
-            <!-- Topo do card com o nome da loja -->
             <div class="card-header text-center py-3">
                 <div class="marca-texto fs-1">MeetCars</div>
             </div>
@@ -29,14 +28,11 @@
                                placeholder="Digite sua senha">
                     </div>
 
-                    <!-- Recuperar Senha: logo abaixo do campo, pequeno e à direita -->
                     <div class="text-end mb-3">
                         <a href="#" class="link-recuperar">Recuperar senha</a>
                     </div>
 
-                    <!-- Por enquanto "Entrar" é um link direto para o dashboard (sem verificação) -->
                     <a href="{{ url_for('dashboard') }}" class="btn btn-primaria w-100 mb-3">Entrar</a>
-                    <!-- Só visual: não faz nada por enquanto -->
                     <button type="button" class="btn btn-secundaria w-100">Cadastrar</button>
                 </form>
             </div>
