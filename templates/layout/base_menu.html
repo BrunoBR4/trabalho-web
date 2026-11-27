@@ -24,18 +24,37 @@
                class="menu-link {% if request.endpoint == 'dashboard' %}ativo{% endif %}">
                 <i class="bi bi-shop"></i> Comércio
             </a>
+
+            <a href="{{ url_for('dashboard') }}"
+               class="menu-link {% if request.endpoint == 'dashboard' %}ativo{% endif %}">
+                <i class="bi bi-shop"></i> Perfil do sistema
+            </a>
+
+            <a href="{{ url_for('listar_perfis') }}"
+               class="menu-link {% if request.endpoint == 'dashboard' %}ativo{% endif %}">
+                <i class="bi bi-card-list"></i> Listar Perfis
+            </a>
+
+            <a href="{{ url_for('inserir_perfil') }}"
+               class="menu-link {% if request.endpoint == 'dashboard' %}ativo{% endif %}">
+                <i class="bi bi-person-plus"></i> Cadastrar Perfil
+            </a>
+
             <a href="{{ url_for('listagem_usuarios') }}"
                class="menu-link {% if request.endpoint == 'listagem_usuarios' %}ativo{% endif %}">
                 <i class="bi bi-people"></i> Listagem de Usuários
             </a>
+
             <a href="{{ url_for('cadastro_usuarios') }}"
                class="menu-link {% if request.endpoint == 'cadastro_usuarios' %}ativo{% endif %}">
                 <i class="bi bi-person-plus"></i> Cadastro de Usuários
             </a>
+
             <a href="{{ url_for('listagem_vendas') }}"
                class="menu-link {% if request.endpoint == 'listagem_vendas' %}ativo{% endif %}">
                 <i class="bi bi-card-list"></i> Listagem de Vendas
             </a>
+
             <a href="{{ url_for('cadastro_vendas') }}"
                class="menu-link {% if request.endpoint == 'cadastro_vendas' %}ativo{% endif %}">
                 <i class="bi bi-plus-circle"></i> Cadastro de Vendas
